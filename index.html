@@ -1,0 +1,41 @@
+---
+layout: default
+title: 首页
+---
+
+<div class="home">
+  <p class="intro">{{ site.description }}</p>
+
+  <ul class="post-list">
+    {% for post in paginator.posts %}
+      <li>
+        <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span class="post-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+          {% if post.categories.size > 0 %}
+            <span class="post-cats">{{ post.categories | join: " / " }}</span>
+          {% endif %}
+        </span>
+        {% if post.excerpt %}
+          <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% if paginator.total_pages > 1 %}
+  <nav class="pagination">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | relative_url }}">上一页</a>
+    {% else %}
+      <span></span>
+    {% endif %}
+    <span>第 {{ paginator.page }} / {{ paginator.total_pages }} 页</span>
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}">下一页</a>
+    {% else %}
+      <span></span>
+    {% endif %}
+  </nav>
+  {% endif %}
+</div>

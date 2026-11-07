@@ -1,0 +1,37 @@
+title: 我的博客
+description: 写代码、读书和生活的记录
+author: jsu317803-maker
+lang: zh-CN
+timezone: Asia/Shanghai
+url: "https://jsu317803-maker.github.io"
+baseurl: ""                         # 用户站点留空；项目站点填 /仓库名
+
+theme: jekyll-theme-minimal
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+permalink: /:year/:month/:day/:title/
+
+paginate: 5
+paginate_path: "/page:num/"
+
+plugins:
+  - jekyll-feed         # 生成 /feed.xml
+  - jekyll-seo-tag      # 模板里的 {% seo %} 标签
+  - jekyll-sitemap      # 生成 /sitemap.xml
+  - jekyll-paginate     # 首页分页
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: jsu317803-maker
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
